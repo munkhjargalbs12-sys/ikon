@@ -8,7 +8,7 @@ import { Checkbox } from "react-native-paper";
 const slides = [
   { id: 1, image: require("@/assets/images/slide1.png"), text: "Тавтай морил!" },
   { id: 2, image: require("@/assets/images/slide2.png"), text: "Бүртгүүлээд эхлээрэй" },
-  { id: 3, image: require("@/assets/images/slide3.png"), text: "Тусламж хүсвэл энд байна" },
+  { id: 3, image: require("/assets/images/slide3.png"), text: "Тусламж хүсвэл энд байна" },
 ];
 
 export default function WelcomeScreen() {

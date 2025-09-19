@@ -1,14 +1,14 @@
 // app/(auth)/welcome/index.tsx — 3 слайдтай onboarding
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useRouter } from "expo-router";
-import React, { useState } from "react";
-import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView } from "react-native";
 import { Checkbox } from "react-native-paper";
+import React, { useState } from "react";
 
 const slides = [
-  { id: 1, image: require("@/assets/images/slide1.png"), text: "Тавтай морил!" },
-  { id: 2, image: require("@/assets/images/slide2.png"), text: "Бүртгүүлээд эхлээрэй" },
-  { id: 3, image: require("@/assets/images/slide3.png"), text: "Тусламж хүсвэл энд байна" },
+  { id: 1, image: require("@/assets/slide1_welcome_notext_clean.png"), text: "Тавтай морил!" },
+  { id: 2, image: require("@/assets/slide2_register_full.png"), text: "Бүртгүүлээд эхлээрэй" },
+  { id: 3, image: require("@/assets/slide3_help_full.png"), text: "Тусламж хүсвэл энд байна" },
 ];
 
 export default function WelcomeScreen() {
