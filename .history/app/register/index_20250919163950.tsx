@@ -133,9 +133,16 @@ export default function RegisterScreen(): JSX.Element {
               {renderInput("Утас 2", "phone2", "+976 88xxxxxx", false, "phone-pad", { marginRight: 0 })}
             </View>
 
-            <View style={[styles.row,{ gap: 10 }]}>
-              <View style={{ flex: 1 }}>{renderInput("Яаралтай холбоо", "emerg1", "+976 88xxxxxx", false, "phone-pad")}</View>
-              <View style={[styles.pickerWrapper, {flex:1}]}>
+            <View style={styles.row}>
+             <View style={[styles.row, { gap: 10 }]}>
+  <View style={{ flex: 1 }}>
+    {renderInput("Яаралтай холбох", "emerg1", "+976 88xxxxxx", false, "phone-pad")}
+  </View>
+  <View style={{ flex: 1 }}>
+    {renderInput("Таны хэн болох", "emerg2", "+976 88xxxxxx", false, "phone-pad")}
+  </View>
+</View>
+              <View style={styles.pickerWrapper}>
                 <Text style={styles.label}>Таны хэн болох</Text>
                 <View style={[styles.pickerContainer, { borderColor: form.emergRelation ? "#4ade80" : "#555" }]}> 
                   <Picker style={{ color: "#ccc" }} selectedValue={form.emergRelation} onValueChange={(v) => handleChange("emergRelation", v)} dropdownIconColor="#fff">

@@ -92,7 +92,7 @@ export default function RegisterScreen(): JSX.Element {
     return (
       <View style={[styles.inputWrapper, styleOverride]}>
         <Text style={styles.label}>{label}</Text>
-        
+        <Text style={styles.Add}>Утасны дугаараар нэвтрэх</Text>
         <View style={styles.inputRow}>
           <TextInput
             value={form[name]}
@@ -120,7 +120,7 @@ export default function RegisterScreen(): JSX.Element {
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <ScrollView contentContainerStyle={styles.scrollContent}>
           <View style={styles.formWrapper}>
-            <Text style={styles.title}>Бүртгэл үндсэн</Text>
+            <Text style={styles.title}>I-KonTor</Text>
 
             <View style={styles.row}>
                     {renderInput("Овог", "surname", "Овог оруулна уу")}
@@ -133,9 +133,9 @@ export default function RegisterScreen(): JSX.Element {
               {renderInput("Утас 2", "phone2", "+976 88xxxxxx", false, "phone-pad", { marginRight: 0 })}
             </View>
 
-            <View style={[styles.row,{ gap: 10 }]}>
-              <View style={{ flex: 1 }}>{renderInput("Яаралтай холбоо", "emerg1", "+976 88xxxxxx", false, "phone-pad")}</View>
-              <View style={[styles.pickerWrapper, {flex:1}]}>
+            <View style={styles.row}>
+              <View style={{ flex: 1, marginRight: 8 }}>{renderInput("Яаралтай холбоо", "emerg1", "+976 88xxxxxx", false, "phone-pad")}</View>
+              <View style={styles.pickerWrapper}>
                 <Text style={styles.label}>Таны хэн болох</Text>
                 <View style={[styles.pickerContainer, { borderColor: form.emergRelation ? "#4ade80" : "#555" }]}> 
                   <Picker style={{ color: "#ccc" }} selectedValue={form.emergRelation} onValueChange={(v) => handleChange("emergRelation", v)} dropdownIconColor="#fff">
@@ -175,7 +175,7 @@ const styles = StyleSheet.create({
   formWrapper: { flex: 1, justifyContent: "center" },
   title: { fontSize: 24, fontWeight: "bold", textAlign: "center", color: "white", marginBottom: 16 },
   row: { flexDirection: "row", alignItems: "flex-start", marginBottom: 10 },
-  inputWrapper: { flex: 1, marginBottom: 10, marginRight: 8},
+  inputWrapper: { flex: 1, marginBottom: 10, marginRight: 8 },
   inputRow: { flexDirection: "row", alignItems: "center" },
   label: { color: "#ccc", marginBottom: 4, fontSize: 14 },
   input: {

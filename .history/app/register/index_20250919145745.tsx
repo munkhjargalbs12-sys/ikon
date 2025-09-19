@@ -1,6 +1,5 @@
 import { Ionicons } from "@expo/vector-icons";
 import { Picker } from "@react-native-picker/picker";
-import { useRouter } from "expo-router";
 import React, { JSX, useEffect, useState } from "react";
 import {
   Keyboard,
@@ -28,15 +27,6 @@ interface FormState {
 }
 
 export default function RegisterScreen(): JSX.Element {
-
- 
-
-  
-  const router = useRouter();
-  const onSubmit = () => {
-    
-   router.push("/register/Address"); // ← Дараагийн хуудасны нэр
-  };
   const [form, setForm] = useState<FormState>({
     surname: "",
     name: "",
@@ -66,7 +56,6 @@ export default function RegisterScreen(): JSX.Element {
     password: (v) => v.length >= 6,
     password2: (v, all) => v === all.password && v.length >= 6,
   };
-   
 
   const isFieldValid = (field: keyof FormState): boolean => validators[field](form[field], form);
 
@@ -92,7 +81,6 @@ export default function RegisterScreen(): JSX.Element {
     return (
       <View style={[styles.inputWrapper, styleOverride]}>
         <Text style={styles.label}>{label}</Text>
-        
         <View style={styles.inputRow}>
           <TextInput
             value={form[name]}
@@ -120,7 +108,7 @@ export default function RegisterScreen(): JSX.Element {
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <ScrollView contentContainerStyle={styles.scrollContent}>
           <View style={styles.formWrapper}>
-            <Text style={styles.title}>Бүртгэл үндсэн</Text>
+            <Text style={styles.title}>I-KonTor</Text>
 
             <View style={styles.row}>
                     {renderInput("Овог", "surname", "Овог оруулна уу")}
@@ -133,13 +121,13 @@ export default function RegisterScreen(): JSX.Element {
               {renderInput("Утас 2", "phone2", "+976 88xxxxxx", false, "phone-pad", { marginRight: 0 })}
             </View>
 
-            <View style={[styles.row,{ gap: 10 }]}>
-              <View style={{ flex: 1 }}>{renderInput("Яаралтай холбоо", "emerg1", "+976 88xxxxxx", false, "phone-pad")}</View>
-              <View style={[styles.pickerWrapper, {flex:1}]}>
+            <View style={styles.row}>
+              <View style={{ flex: 1, marginRight: 8 }}>{renderInput("Яаралтай холбоо", "emerg1", "+976 88xxxxxx", false, "phone-pad")}</View>
+              <View style={styles.pickerWrapper}>
                 <Text style={styles.label}>Таны хэн болох</Text>
                 <View style={[styles.pickerContainer, { borderColor: form.emergRelation ? "#4ade80" : "#555" }]}> 
-                  <Picker style={{ color: "#ccc" }} selectedValue={form.emergRelation} onValueChange={(v) => handleChange("emergRelation", v)} dropdownIconColor="#fff">
-                    <Picker.Item label="Сонгоно уу" value=""  />
+                  <Picker style={{ color: "#ccc#000000ff" }} selectedValue={form.emergRelation} onValueChange={(v) => handleChange("emergRelation", v)} dropdownIconColor="#fff">
+                    <Picker.Item label="Сонгоно уу" value=""  color="#4ade80"/>
                     
                     {relations.map((r) => (
                       <Picker.Item key={r} label={r} value={r} />
@@ -149,13 +137,13 @@ export default function RegisterScreen(): JSX.Element {
               </View>
             </View>
 
-            <View style={styles.row}>{renderInput("И-мэйл", "email", "example@mail.com", false, "email-address")}</View>
+            <View style={styles.row}>{renderInput("И-мэйл", "email", "example@mail.com", false, "email-address")}
             <View style={styles.row}>{renderInput("Нууц үг", "password", "Нууц үг оруулна уу", true)}</View>
             <View style={styles.row}>{renderInput("Нууц үг давтах", "password2", "Давтан оруулна уу", true)}</View>
 
             {allValid ? (
               <TouchableOpacity onPress={onSubmit} style={styles.submitButton}>
-                    <Text style={styles.submitText}>Үргэлжлэх</Text>
+                <Text style={styles.submitText}>Үргэлжлэх</Text>
               </TouchableOpacity>
             ) : (
               <Text style={styles.errorText}>Бүх талбаруудыг бөглөнө үү</Text>
@@ -166,7 +154,10 @@ export default function RegisterScreen(): JSX.Element {
     </KeyboardAvoidingView>
   );
 
- 
+  function onSubmit() {
+    if (!allValid) return;
+    alert("Бүртгэл амжилттай!");
+  }
 }
 
 const styles = StyleSheet.create({
@@ -174,8 +165,8 @@ const styles = StyleSheet.create({
   scrollContent: { padding: 20, flexGrow: 1 },
   formWrapper: { flex: 1, justifyContent: "center" },
   title: { fontSize: 24, fontWeight: "bold", textAlign: "center", color: "white", marginBottom: 16 },
-  row: { flexDirection: "row", alignItems: "flex-start", marginBottom: 10 },
-  inputWrapper: { flex: 1, marginBottom: 10, marginRight: 8},
+  row: { flexDirection: "row", alignItems: "flex-start", marginBottom: 12 },
+  inputWrapper: { flex: 1, marginBottom: 12, marginRight: 8 },
   inputRow: { flexDirection: "row", alignItems: "center" },
   label: { color: "#ccc", marginBottom: 4, fontSize: 14 },
   input: {
