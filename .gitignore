@@ -1,0 +1,12 @@
+node_modules/
+.expo/
+.expo-shared/
+dist/
+web-build/
+*.log
+.env
+# Android/iOS build
+android/app/build/
+android/.gradle/
+ios/DerivedData/
+ios/Pods/
